@@ -1,0 +1,41 @@
+body{
+    background-image: url('https://images.hdqwalls.com/download/the-elder-scrolls-v-skyrim-4k-mg-1366x768.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.h1landing{
+    color: white;
+    font-style: italic;
+    font-size: 35px;
+    padding-top: 200px;
+    padding-bottom: 55px;
+} 
+
+.buttonlanding {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   .buttonlanding:hover {
+    background-color: #023e8a;
+    box-shadow: 0px 15px 20px rgba(47, 37, 179, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   .buttonlanding:active {
+    transform: translateY(-1px);
+   }
+    

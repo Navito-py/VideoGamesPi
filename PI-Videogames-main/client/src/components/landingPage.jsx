@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../styles/landingPage.css'
 
 export default function landingPage() {
     return (
-        <div className=''>
-            <h1>El limite en el mundo es la realidad... pero el limite en los videojuegos, es la imaginacion</h1>
+        <div className='divcontainer'>
+            <h1 className='h1landing'>everything mortal fades with time, the spirit endures - 'Paarthurnax'</h1>
             <Link to='/home'>
-                <button>Press Start</button>
+                <button className='buttonlanding'>Press Start</button>
             </Link>
         </div>
     )
