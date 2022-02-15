@@ -1,0 +1,95 @@
+.divbuttonback{
+    display: flex;
+    justify-content: left;
+}
+
+.h1letscreate{
+    color: white;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.labelcreate{
+    color: white;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.h3seekers{
+    color: white;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.h4state{
+    color: white;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.selectscreate select {
+	background: transparent;
+	width: 200px;
+	height: 35px;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	border: 0;
+	border-radius: 0;
+	-webkit-appearance: none;
+}
+
+.errorp{
+    color: red;
+    text-shadow: 2px 2px 2px black;
+}
+
+.selectscreate {
+	width: 180px;
+	height: 35px;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	border-radius: 3px 5px 5px 3px;
+}
+
+.selectscreate select {
+	padding-right: 0;
+	vertical-align: top!important;
+	text-align: left;
+	height: auto;
+	line-height: 1em;
+}
+
+.inputcreate{
+    height: 30px;
+    border-radius: 45px;
+    border-style: solid;
+    border-color: white;
+}
+
+.buttonbackhome {
+    margin-left: 10px ;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 30px;
+    padding: 1em 2em;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   .buttonbackhome:hover {
+    background-color: #023e8a;
+    box-shadow: 0px 15px 20px rgba(47, 37, 179, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   .buttonbackhome:active {
+    transform: translateY(-1px);
+}

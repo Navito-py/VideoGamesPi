@@ -1,0 +1,32 @@
+.cardprincipal{
+    font-style: italic;
+    color: white;
+    border-style: solid;
+    border-radius: 30px;
+    height: 400px;
+    width: 280px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.cardimg{
+    border-radius: 30px;
+}
+
+.gendercontainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+    padding-top: 34px;
+}
+
+.genrerender{
+    text-align: center;
+    height: 0px;
+}
+
+.cardname{
+    height: 10px;
+    
+}

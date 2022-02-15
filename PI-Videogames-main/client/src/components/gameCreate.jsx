@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {postGame, getGenres} from '../actions/index'
 import {useDispatch, useSelector} from 'react-redux'
+import '../styles/GameCreate.css'
 
 function validate(input){
     let errors = {}
@@ -13,7 +14,7 @@ function validate(input){
         errors.released = 'The game must have a release date!';
     }if(!input.rating){
         errors.rating = 'the game must have a rating!';
-    }if(input.rating < 0 || input.rating > 5){
+    }if(input.rating < 0 || input.rating > 5 || input.rating / input.rating !== 1){
         errors.rating = 'The rating must be into 0 and 5 points!';
     }if(!input.platforms){
         errors.platforms = 'The game must have a least 1 platform'
@@ -99,6 +100,7 @@ export default function GameCreate() {
 
     function handlePostGame(e){
         if(!errors.name && !errors.description && !errors.released && !errors.rating && !errors.platforms && !errors.genres ){
+            e.preventDefault()
             if(input.name !== ''){
             e.preventDefault()
             dispatch(postGame(input))
@@ -115,56 +117,58 @@ export default function GameCreate() {
             }
         }else{
             e.preventDefault()
-            alert('sa')
+            alert('Please complete all the requireds fields')
         }
     }
 
     return (
         <div>
+            <div className='divbuttonback'>
             <Link to='/home' >
-                <button>Back to Home...</button>
+                <button className='buttonbackhome'>Back to Home...</button>
             </Link>
-            <h1>Let`s create our new Game!</h1>
+            </div>
+            <h1 className='h1letscreate'>Let`s create our new Game!</h1>
             <form onSubmit={e => handlePostGame(e)}>
                 <div>
-                    <label>Name: </label><input placeholder='Borderlands' onChange={handleChange} type='text' value={input.name} name='name'></input>
+                    <label className='labelcreate'>Name: </label><input className='inputcreate' placeholder='Borderlands' onChange={handleChange} type='text' value={input.name} name='name'></input>
                     {
                         errors.name && (
-                            <p>{errors.name}</p>
+                            <p className='errorp'>{errors.name}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Description: </label><input placeholder='Shoot and loot' onChange={handleChange} type='text' value={input.description} name='description'></input>
+                    <label className='labelcreate'>Description: </label><input className='inputcreate' placeholder='Shoot and loot' onChange={handleChange} type='text' value={input.description} name='description'></input>
                     {
                         errors.description && (
-                            <p>{errors.description}</p>
+                            <p className='errorp'>{errors.description}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Release date: </label><input placeholder='01-01-01' onChange={handleChange} type='date' value={input.released} name='released'></input>
+                    <label className='labelcreate'>Release date: </label><input className='inputcreate' placeholder='01-01-01' onChange={handleChange} type='date' value={input.released} name='released'></input>
                     {
                         errors.released && (
-                            <p>{errors.released}</p>
+                            <p className='errorp'>{errors.released}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Image URL: </label><input placeholder='Optional...' onChange={handleChange} type='text' value={input.background_image} name='background_image'></input>
+                    <label className='labelcreate'>Image URL: </label><input className='inputcreate' placeholder='Optional...' onChange={handleChange} type='text' value={input.background_image} name='background_image'></input>
                 </div>
                 <div>
-                    <label>Rating: </label><input placeholder='0 to 5' onChange={handleChange} type='text' value={input.rating} name='rating'></input>
+                    <label className='labelcreate'>Rating: </label><input className='inputcreate' placeholder='0 to 5' onChange={handleChange} type='text' value={input.rating} name='rating'></input>
                     {
                         errors.rating && (
-                            <p>{errors.rating}</p>
+                            <p className='errorp'>{errors.rating}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Platforms: </label>
-                    <select onChange= {(e) => handlePlatform(e)}>
-                        <option>...</option>
+                    <label className='labelcreate'>Platforms: </label>
+                    <select className='selectscreate' onChange= {(e) => handlePlatform(e)}>
+                        <option hidden selected>...</option>
                         <option value='PC'>PC</option>
                         <option value='macOS'>macOS</option>
                         <option value='Linux'>Linux</option>
@@ -181,15 +185,15 @@ export default function GameCreate() {
                     </select>
                     {
                         errors.platforms && (
-                            <p>{errors.platforms}</p>
+                            <p className='errorp' >{errors.platforms}</p>
                         )
                     }
-                    <button onClick={(e) => handleResetPlatform(e)}>Reset Platforms</button>
+                    <button className='buttonbackhome' onClick={(e) => handleResetPlatform(e)}>Reset Platforms</button>
                 </div>
                 <div>
-                    <label>Genres: </label>
-                    <select onChange={(e) => handleGenres(e)}>
-                        <option>...</option>
+                    <label className='labelcreate'>Genres: </label>
+                    <select className='selectscreate' onChange={(e) => handleGenres(e)}>
+                        <option hidden selected>...</option>
                         {
                           stategenres.map(e => {
                               key++
@@ -200,18 +204,18 @@ export default function GameCreate() {
                         }
                     </select>
                     {errors.genres && (
-                            <p>{errors.genres}</p>
+                            <p className='errorp'>{errors.genres}</p>
                         )}
-                    <button onClick={(e) => handleResetGenres(e)}>Reset Genres</button>
+                    <button className='buttonbackhome' onClick={(e) => handleResetGenres(e)}>Reset Genres</button>
                 </div>
-                <button type='submit'>Create new game</button>
+                <button className='buttonbackhome' type='submit'>Create new game</button>
                 <div>
-                    <h3>Seleccioned genres:</h3>
-                    <ul><li>{input.genres.map(e => e + ', ')}</li></ul>
+                    <h3 className='h3seekers'>Seleccioned genres:</h3>
+                    <p className='h4state'>{input.genres.map(e => e + ', ')}</p>
                 </div>
                 <div>
-                    <h3>Seleccioned platformss:</h3>
-                    <h4>{input.platforms}</h4>
+                    <h3 className='h3seekers'>Seleccioned platforms:</h3>
+                    <h4 className='h4state'>{input.platforms}</h4>
                 </div>
             </form>
         </div>

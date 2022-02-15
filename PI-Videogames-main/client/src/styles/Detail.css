@@ -1,0 +1,74 @@
+.divbuttonreturn{
+    display: flex;
+}
+
+.detailname{
+    color: white;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.imagedetail{
+    border-radius: 45px;
+}
+
+.rrg{
+    color: white;
+    margin-left: 80px;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.loading{
+    color: white;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+.platformsdetail{
+    color: white;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 2px #023e8a;
+}
+
+
+.divrgr{
+    display: flex;
+    justify-content: center;
+}
+
+.descriptiondetail{
+    color: white;
+    width: 1000px;
+    text-align: center;
+    margin-left: 190px ;
+    border-style: double;
+}
+
+.buttonreturnh {
+    margin-left: 10px ;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 30px;
+    padding: 1em 2em;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   .buttonreturnh:hover {
+    background-color: #023e8a;
+    box-shadow: 0px 15px 20px rgba(47, 37, 179, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   .buttonreturnh:active {
+    transform: translateY(-1px);
+}

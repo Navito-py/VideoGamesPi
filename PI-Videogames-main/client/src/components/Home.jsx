@@ -6,9 +6,10 @@ import {Link} from 'react-router-dom'
 import Card from './Card'
 import Paginado from './Paginado'
 import SearchBar from './searchBar'
+import '../styles/Home.css'
 
 export default function Home() {
-    var multkey = 1
+    var multkey2 = 5
     const dispatch = useDispatch()
     const allGames = useSelector((state) => state.games)
     const allGenres = useSelector((state) => state.allGenres)
@@ -54,59 +55,68 @@ export default function Home() {
     }
 
     return (
-        <div>
-            <Link to= '/videogame'>Create new game</Link>
-            <button onClick= {e => {handleRefresh(e)}}>Refresh all games</button>
-            <div>
-                <SearchBar/>
+        <div className='principaldiv' >
+            <div className='buttonandsearchbar'>   
+                <div className='buttondivcontainer'>
+                    <Link to= '/videogame'>
+                        <button className='buttoncreategame'>Create new game</button>
+                    </Link>
+                    <button className='buttoncreategame' onClick= {e => {handleRefresh(e)}}>Refresh all games</button>
+                </div>
+                <div className='searchbardiv'>
+                    <SearchBar/>
+                </div>
             </div>
-            <div>
-                <h3>Filter by:</h3>
-                <select onChange={e => handleFilterCreation(e)}>
-                    <option value='all'>All</option>
-                    <option value='existent'>Existent</option>
-                    <option value='created'>Created</option>
-                </select>
+            <div className='allselectshome'>
+                <div>
+                    <h3 className="h1selects">Filter by:</h3>
+                    <select className='homeselects' onChange={e => handleFilterCreation(e)}>
+                        <option value='all'>All</option>
+                        <option value='existent'>Existent</option>
+                        <option value='created'>Created</option>
+                    </select>
+                </div>
+                <div >
+                    <h3 className="h1selects">Sort by:</h3>
+                    <select className='homeselects' onChange={e => handleSortByName(e)}>
+                        <option value='rating'>Default</option>
+                        <option value='ASC'>Ascendant</option>
+                        <option value='DEC'>Decendent</option>
+                        <option value='rating'>Rating</option>
+                    </select>
+                </div>
+                <div >
+                    <h3 className="h1selects">Filter By:</h3>
+                    <select className='homeselects' onChange={e => handleFilterByGenre(e)}>
+                        <option value='All'>All</option>
+                        {
+                            allGenres.map(e => {
+                                return <option key={'b' + multkey2++} value={e.name}>{e.name}</option>
+                            })
+                        }
+                    </select>
+                </div>
             </div>
-            <div>
-                <h3>Sort by:</h3>
-                <select onChange={e => handleSortByName(e)}>
-                    <option value='rating'>Default</option>
-                    <option value='ASC'>Ascendant</option>
-                    <option value='DEC'>Decendent</option>
-                    <option value='rating'>Rating</option>
-                </select>
-            </div>
-            <div>
-                <h3>Filter By:</h3>
-                <select onChange={e => handleFilterByGenre(e)}>
-                    <option value='All'>All</option>
-                    {
-                        allGenres.map(e => {
-                            multkey++
-                            return <option value={e.name} key={multkey}>{e.name}</option>
-                        })
-                    }
-                </select>
-            </div>
-            <div>
+            <div >
                 <Paginado
                 gamesPerPage = {gamesPerPage}
                 allGames = {allGames.length}
                 paginado = {paginado}
                 />
             </div>
+            <div className='cardsdiv'>
             {
                 currentGames?.map(e => {
                     return(
                         <div>
-                            <Link to = {'/videogame/' + e.id}>
+                            <Link key={'a' +multkey2++} to = {'/videogame/' + e.id} style={{ textDecoration: 'none' }}>
                                 <Card key={e.id} name={e.name} background_image={e.background_image} genres={e.genres}/>
                             </Link>
                         </div>
                     )
                 })
             }
+            </div>
         </div>
     )
 }

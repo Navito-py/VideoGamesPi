@@ -3,6 +3,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    text-decoration: none;
 }
 .h1landing{
     color: white;
