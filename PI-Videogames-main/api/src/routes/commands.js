@@ -24,15 +24,11 @@ async function getApiInfo() {
                         name: e.name,
                         background_image: e.background_image,
                         genres: e.genres.map(e => {
-                            return {
-                                name: e.name
-                            }
+                            return {name: e.name}
                         }),
                         platforms: e.platforms.map(e => {
-                            return{
-                                name: e.platform.name
-                            }
-                        }),
+                            return e.platform.name
+                        }).join(' - '),
                         rating: e.rating,
                         released: e.released
 
@@ -41,7 +37,7 @@ async function getApiInfo() {
             }
         })
         return allgames
-    }catch(erroe){
+    }catch(error){
         console.log(error)
     }
 }
@@ -56,13 +52,14 @@ async function getDbInfo() {
             }
         }
     })
+
     return data
 }
 
 async function GetAllData () {
     let apiInfo = await getApiInfo()
     let dbInfo = await getDbInfo()
-    let allData = dbInfo.concat(apiInfo)
+    let allData = apiInfo.concat(dbInfo)
     return allData
 }
 
@@ -70,7 +67,7 @@ const apiGenre = async function(){
     const info = await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)
     const parsedinfo = await info.data.results.map(e => {
         return {
-            name: e.name,
+            name: e.name
         }
     })
     return parsedinfo

@@ -56,10 +56,11 @@ router.get('/videogame/:id', async function(req, res) {
                 released: e.released,
                 rating: e.rating,
                 platforms: e.platforms.map(e => {
-                    return {
-                        name: e.platform.name
-                    }
-                })
+                    return e.platform.name
+                }).join(' - '),
+                genres: e.genres.map(e => {
+                    return {name: e.name}
+                }),
             }
         })
         if(apidata.length > 0){
@@ -72,15 +73,15 @@ router.get('/videogame/:id', async function(req, res) {
 
 
 router.get('/genres', async function(req, res){
-    const genre = await apiGenre()
-    if(genre){
-        genre.map(e => Genre.findOrCreate({
+    const allgenre = await apiGenre()
+    if(allgenre){
+        allgenre.map(e => Genre.findOrCreate({
             where: {
-                name:e.name
+                name: e.name
             }
         }))
     }
-    res.send(genre) 
+    res.send(allgenre) 
 })
 
 
@@ -105,7 +106,7 @@ router.post('/videogame', async function(req, res){
             }
         })
         newgame.addGenre(genreDb)
-        res.status(200).send('videogame created sucessfully')
+        res.status(200).json(genreDb)
     }else{
         res.status(404).send('Please, Complete all the fields')
     }
