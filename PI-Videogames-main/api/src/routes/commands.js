@@ -1,5 +1,4 @@
 const axios = require('axios')
-const { response } = require('express')
 const { Videogame, Genre } = require('../db.js')
 const { API_KEY } = process.env
 
@@ -52,7 +51,6 @@ async function getDbInfo() {
             }
         }
     })
-
     return data
 }
 

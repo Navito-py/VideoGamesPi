@@ -1,8 +1,7 @@
-const { Router } = require('express');
 const express = require('express')
 const axios = require('axios')
 const { Videogame, Genre } = require('../db.js')
-const {getApiInfo, getDbInfo, GetAllData, apiGenre} = require('./commands');
+const {getDbInfo, GetAllData, apiGenre} = require('./commands');
 const {API_KEY} = process.env
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -18,7 +17,7 @@ router.get('/videogames', async function(req, res){
     try {let allgames = await GetAllData()
         if(name){
             console.log(name)
-            let filtedByName = await allgames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
+            let filtedByName = allgames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
             if(filtedByName.length > 0){
                 return res.status(200).json(filtedByName)
             }else{

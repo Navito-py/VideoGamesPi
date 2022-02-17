@@ -8,7 +8,7 @@ import '../styles/Detail.css'
 
 export default function Detail(props) {
     const dispatch = useDispatch()
-
+    var key=1
     const id = props.match.params.id
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export default function Detail(props) {
                 <div className ='divrgr'>   
                     <h3 className='rrg'>Release date{<p>{game[0].released}</p>}</h3>
                     <h3 className='rrg'>Rating{<p>{game[0].rating}</p>}</h3>
-                    <h3 className='rrg'>Genres{game[0].genres.map(e => <p>{e.name}</p>)}</h3>
+                    <h3 className='rrg'>Genres{game[0].genres.map(e => <p key={key++}>{e.name}</p>)}</h3>
                 </div>
                 <h3 className='platformsdetail'>Platforms: {game[0].platforms}</h3>
             </div>
